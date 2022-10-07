@@ -13,13 +13,10 @@ class SendText():
         self.order = order
         self.message = message
 
-
         response = requests.post('https://textbelt.com/text', {
             'phone': self.phone,
             'message': self.message,
             'key': self.key
         })
+        
         print("response: ", response.json())
-
-    
-
