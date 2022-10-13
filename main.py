@@ -15,7 +15,6 @@ load_dotenv()
 url = os.environ.get('URL')
 time = os.environ.get('ORDER_TIME')
 order = os.environ.get('ORDER')
-key = os.environ.get("TEXT_API_KEY")
 phone = os.environ.get("PHONE")
 availability = isAvailable()
 
@@ -28,10 +27,10 @@ driver.get(url)
 
 if availability == False:
     unavailable_message = "Online ordering is currently unavailable"
-    SendText(key, phone, url, time, order, unavailable_message)
+    SendText(unavailable_message)
     driver.quit()
 else:
-# menu page
+    # menu page
     try:
         print("menu page ready")
         driver.implicitly_wait(10)
@@ -48,6 +47,6 @@ else:
 
     # confirmation text
     # confirmation_message = "Online Ordering Placed" + "\ntime: " + time + "\norder: " + order
-    # SendText(key, phone, url, time, order, confirmation_message)
+    # SendText(confirmation_message)
 
 print("Done")
