@@ -26,33 +26,28 @@ driver.maximize_window()
 driver.get(url)
 
 
-if availability == True:
-    try:
-        print("order modal ready")
-        if time == "FUTURE":
-            driver.find_element(By.XPATH, '// span[contains(text(), "Schedule for later")]').click()
-        elif time == "ASAP":
-            driver.find_element(By.XPATH, '//button[@data-testid="fulfillment-selector-submit"]').click()
-    except TimeoutException:
-        print("order modal timeout")
-
-
+if availability == False:
+    unavailable_message = "Online ordering is currently unavailable"
+    SendText(key, phone, url, time, order, unavailable_message)
+    driver.quit()
+else:
 # menu page
-try:
-    print("menu page ready")
-    driver.implicitly_wait(10)
-    driver.find_element(By.XPATH, '// span[contains(text(), "BYO Sandwich")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Toasted")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Sweet Potato Fries")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Ciabatta")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Turkey")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Pepper Jack")]').click()
-    driver.find_element(By.XPATH, '// div[contains(text(), "Pesto Aioli")]').click()    
-except TimeoutException:
-    print("menu page timeout")
+    try:
+        print("menu page ready")
+        driver.implicitly_wait(10)
+        driver.find_element(By.XPATH, '// span[contains(text(), "BYO Sandwich")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Toasted")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Sweet Potato Fries")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Ciabatta")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Turkey")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Pepper Jack")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "Pesto Aioli")]').click()    
+    except TimeoutException:
+        print("menu page timeout")
 
 
-# confirmation text
-# message = "Online Ordering Placed" + "\ntime: " + time + "\norder: " + order
-# SendText(key, phone, url, time, order, message)
+    # confirmation text
+    # confirmation_message = "Online Ordering Placed" + "\ntime: " + time + "\norder: " + order
+    # SendText(key, phone, url, time, order, confirmation_message)
+
 print("Done")
