@@ -34,18 +34,29 @@ else:
     try:
         print("menu page ready")
         driver.implicitly_wait(10)
-        driver.find_element(By.XPATH, '// span[contains(text(), "BYO Sandwich")]').click()
+        driver.find_element(By.XPATH, '// div[contains(text(), "BYO Sandwich")]').click()
         driver.find_element(By.XPATH, '// div[contains(text(), "Toasted")]').click()
         driver.find_element(By.XPATH, '// div[contains(text(), "Sweet Potato Fries")]').click()
         driver.find_element(By.XPATH, '// div[contains(text(), "Ciabatta")]').click()
         driver.find_element(By.XPATH, '// div[contains(text(), "Turkey")]').click()
         driver.find_element(By.XPATH, '// div[contains(text(), "Pepper Jack")]').click()
-        driver.find_element(By.XPATH, '// div[contains(text(), "Pesto Aioli")]').click()    
+        driver.find_element(By.XPATH, '// div[contains(text(), "Pesto Aioli")]').click()
+        driver.find_element(By.XPATH, '// button[@type="button"]').click()
     except TimeoutException:
         print("menu page timeout")
 
 
-    # confirmation text
+# previous orders
+# else:
+#     try:
+#         print("menu page ready")
+#         driver.implicitly_wait(10)
+#         driver.find_element(By.XPATH, '// h3[contains(text(), "BYO Sandwich, Fountain Soda, Tea")]').click()
+#     except TimeoutException:
+#         print("menu page timeout")
+    
+
+# confirmation text
     # confirmation_message = "Online Ordering Placed" + "\ntime: " + time + "\norder: " + order
     # SendText(confirmation_message)
 
