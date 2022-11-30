@@ -10,4 +10,5 @@ def isAvailable():
     else:
         availability = True
 
+    print("isAvailable, availability: ", availability)
     return availability

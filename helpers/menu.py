@@ -1,13 +1,19 @@
-def menu(driver, order, drink, By, WebDriverWait, EC, TimeoutException, email, password):
-    if order == 'previous':
+from helpers.login import login
+
+def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password):
+    # login
+    login(driver, By, WebDriverWait, EC, TimeoutException, email, password)
+   
     # order again
+    if order == 'previous':
         try:
             print("menu - order again ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// button[@data-testid="reorder-add-to-cart"]'))).click()
         except TimeoutException:
             print("order again timeout")
+    
+    # new order
     else:
-    # new order - food
         try:
             print("new order - food ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "BYO Sandwich")]'))).click()
@@ -20,16 +26,3 @@ def menu(driver, order, drink, By, WebDriverWait, EC, TimeoutException, email, p
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
         except TimeoutException:
             print("new order - food timeout")
-    # new order - drink
-        try:
-            print("new order - drink ready")
-            if drink == 'fountain':
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "Fountain Soda, Tea")]'))).click()
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
-            elif drink == 'water':
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "Dasani, Perrier, Vitamin Water")]'))).click()
-                WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
-            else:
-                None
-        except TimeoutException:
-            print("new order - drink timeout")

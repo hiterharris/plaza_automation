@@ -24,11 +24,12 @@ driver.get(url)
 
 
 # start order
-if availabile == True:
+if availabile and WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Open")]'))):
+    print("Open")
     Order(driver, By, WebDriverWait, EC, TimeoutException)
 else:
-    unavailable_message = "Online ordering is currently unavailable"
-    SendText(unavailable_message)
+    print("Closed")
+    SendText("Online ordering is currently unavailable")
 
 print("Done")
 driver.quit()
