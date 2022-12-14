@@ -1,9 +1,4 @@
-from helpers.login import login
-
-def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password):
-    # login
-    login(driver, By, WebDriverWait, EC, TimeoutException, email, password)
-   
+def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password):   
     # order again
     if order == 'previous':
         try:

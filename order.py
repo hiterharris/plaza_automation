@@ -22,7 +22,7 @@ driver.get(url)
 # start order
 if availabile and WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Open")]'))):
     print("Open")
-    env = 'dev'
+    env = 'prod'
     Order(driver, By, WebDriverWait, EC, TimeoutException, env)
 else:
     print("Closed")
