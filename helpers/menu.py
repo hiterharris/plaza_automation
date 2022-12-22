@@ -7,8 +7,8 @@ def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password
         except TimeoutException:
             print("order again timeout")
     
-    # new order
-    else:
+    # BYO Sandwich
+    elif order == 'BYO Sandwich':
         try:
             print("new order - food ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "BYO Sandwich")]'))).click()
@@ -21,3 +21,13 @@ def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
         except TimeoutException:
             print("new order - food timeout")
+    elif order == 'Soda':
+        try:
+            print("new order - food ready")
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "Fountain Soda, Tea")]'))).click()
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
+        except TimeoutException:
+            print("new order - food timeout")
+    else:
+        print('No items added to cart')
+        return

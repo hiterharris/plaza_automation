@@ -20,7 +20,7 @@ driver.maximize_window()
 driver.get(url)
 
 # start order
-if availabile and WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Open")]'))):
+if WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Open")]'))):
     print("Ordering Available")
     env = 'prod'
     Order(driver, By, WebDriverWait, EC, TimeoutException, env)
