@@ -1,6 +1,6 @@
 def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password):   
     # order again
-    if order == 'previous':
+    if order == 'Previous Order':
         try:
             print("menu - order again ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// button[@data-testid="reorder-add-to-cart"]'))).click()

@@ -19,9 +19,9 @@ class Order():
         # start order modal
         try:
             print('start order ready')
-            if time == 'asap':
+            if time == 'ASAP':
                 WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// button[contains(text(), "Start Order")]'))).click()
-            elif time == 'future':
+            elif time == 'Future':
                 driver.find_element(By.ID, 'fulfillment_time').click()
             else:
                 None
