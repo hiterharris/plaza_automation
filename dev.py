@@ -12,7 +12,7 @@ from helpers.Order import Order
 # env
 load_dotenv()
 url = os.environ.get('URL')
-drink = 'true'
+drink = 'false'
 availabile = isAvailable()
 
 # web driver parameters 
