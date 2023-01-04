@@ -44,6 +44,6 @@ class Order():
     
         # confirmation text
         if env == 'prod':
-            SendText("Online Order Placed!" + "\ntime: " + time + "\norder: " + order)
+            SendText("Online Order Placed!" + "\nTime: " + time + "\nOrder: " + order)
         else:
             SendText("TEST Order Complete!" + "\nTime: " + time + "\nOrder: " + order)
