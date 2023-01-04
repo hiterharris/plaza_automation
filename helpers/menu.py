@@ -1,4 +1,4 @@
-def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password):   
+def menu(driver, order, drink, By, WebDriverWait, EC, TimeoutException, email, password):   
     # order again
     if order == 'Previous Order':
         try:
@@ -8,7 +8,7 @@ def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password
             print("order again timeout")
     
     # BYO Sandwich
-    elif order == 'BYO Sandwich':
+    elif (drink == 'false' and order == 'BYO Sandwich' ):
         try:
             print("new order - food ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "BYO Sandwich")]'))).click()
@@ -21,7 +21,7 @@ def menu(driver, order, By, WebDriverWait, EC, TimeoutException, email, password
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Add to Cart")]'))).click()
         except TimeoutException:
             print("new order - food timeout")
-    elif order == 'Soda':
+    elif drink == 'true':
         try:
             print("new order - food ready")
             WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// div[contains(text(), "Fountain Soda, Tea")]'))).click()

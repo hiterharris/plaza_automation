@@ -12,6 +12,7 @@ from helpers.Order import Order
 # env
 load_dotenv()
 url = os.environ.get('URL')
+drink = 'false'
 availabile = isAvailable()
 
 # web driver parameters 
@@ -23,7 +24,7 @@ driver.get(url)
 if WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '// span[contains(text(), "Open")]'))):
     print("Ordering Available")
     env = 'prod'
-    Order(driver, By, WebDriverWait, EC, TimeoutException, env)
+    Order(driver, By, WebDriverWait, EC, TimeoutException, env, drink)
 else:
     print("Ordering Unavailable")
     SendText("Online ordering is currently unavailable")
