@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,12 +13,15 @@ from helpers.Order import Order
 # env
 load_dotenv()
 url = os.environ.get('URL')
-drink = 'true'
+drink = 'false'
+headless = os.environ.get('HEADLESS')
+options = Options()
 availabile = isAvailable()
 
 # web driver parameters 
-driver = webdriver.Chrome()
-driver.maximize_window()
+if headless == 'true':
+    options.headless = True
+driver = webdriver.Chrome(options=options)
 driver.get(url)
 
 # start order
